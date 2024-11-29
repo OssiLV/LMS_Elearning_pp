@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { clearSession } from "@/lib/session"; // A function to clear the session
 
-export async function POST(request: NextRequest): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
     try {
         // Call the function to clear the session (e.g., delete the token or session from the database)
         await clearSession();

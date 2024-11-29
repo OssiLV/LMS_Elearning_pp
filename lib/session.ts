@@ -26,7 +26,7 @@ export async function getSessionServer(request: NextRequest) {
         const decoded = jwt.verify(token as string, SECRET_KEY as string);
 
         return decoded;
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Token verification failed:", error);
         return null; // If token is invalid or expired, return null (session is invalid)
     }

@@ -75,16 +75,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
                 { status: 401 },
             );
         }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Error user sign-in:", { error });
-
-        // Handle Prisma-specific errors (e.g., unique constraint violation)
-        if (error.code === "P2002") {
-            return NextResponse.json(
-                { error: "Unexpected error" },
-                { status: 400 },
-            );
-        }
 
         return NextResponse.json(
             { error: "Internal Server Error" },

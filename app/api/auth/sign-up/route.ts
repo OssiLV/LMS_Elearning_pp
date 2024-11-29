@@ -51,16 +51,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             { user: { id: user.id, email: user.email } },
             { status: 201 },
         );
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Error creating user:", { error });
-
-        // Handle Prisma-specific errors (e.g., unique constraint violation)
-        if (error.code === "P2002") {
-            return NextResponse.json(
-                { error: "A user with this email already exists" },
-                { status: 400 },
-            );
-        }
 
         return NextResponse.json(
             { error: "Internal Server Error" },
