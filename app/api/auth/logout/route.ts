@@ -12,6 +12,8 @@ export async function POST(): Promise<NextResponse> {
             { status: 200 },
         );
     } catch (error) {
+        console.log("LOGOUT: ", error);
+
         return NextResponse.json(
             { error: "Failed to log out" },
             { status: 500 },
